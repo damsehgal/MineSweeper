@@ -6,6 +6,7 @@ public class Main {
 
     private static final String GAME_WON_MESSAGE = "Game Won";
     private static final String GAME_LOSS_MESSAGE = "Game Lost";
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter rows, cols and mines");
@@ -21,12 +22,9 @@ public class Main {
             board.setOnGameOverListener(new Board.OnGameOverListener() {
                 @Override
                 public void onGameOver(int gameStatus) {
-                    if (gameStatus == Board.GAME_WON_STATUS)
-                    {
+                    if (gameStatus == Board.GAME_WON_STATUS) {
                         System.out.print(GAME_WON_MESSAGE);
-                    }
-                    else if (gameStatus == Board.GAME_LOST_STATUS)
-                    {
+                    } else if (gameStatus == Board.GAME_LOST_STATUS) {
                         System.out.print(GAME_LOSS_MESSAGE);
                     }
                 }
