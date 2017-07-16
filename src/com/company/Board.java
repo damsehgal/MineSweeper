@@ -52,7 +52,6 @@ public class Board {
         board = new int[rows][cols];
         opened = new int[rows][cols];
         initialize();
-        openMine(firstChoiceX, firstChoiceY);
     }
 
 
@@ -83,6 +82,7 @@ public class Board {
                 }
             }
         }
+        openMine(firstChoiceX, firstChoiceY);
         printBoard();
         takeInput();
 
@@ -141,7 +141,7 @@ public class Board {
         * */
         System.out.print("  ");
         for (int i = 0; i < rows; ++i)
-            System.out.print(i + "  ");
+            System.out.print(" " + i + " ");
         System.out.println();
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
@@ -162,6 +162,9 @@ public class Board {
     }
 
     private void markMine(int x, int y) {
+        /*
+        * puts flag on block
+        * */
         if (!isValid(x, y) || opened[x][y] == OPENED) {
             System.out.println(INVALID_MINE_MARKED_MESSAGE);
         }
@@ -178,7 +181,7 @@ public class Board {
         /*
         * opens a mine at given index
         * */
-        if (!isValid(x, y) || opened[x][y] == OPENED || opened[x][y] == MINE_SURE || opened[x][y] == MINE_CAN_CHANGE) {
+        if (!isValid(x, y) || opened[x][y] != CLOSED) {
             System.out.println(INVALID_MINE_OPENED_MESSAGE);
             printBoard();
             return;
